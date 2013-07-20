@@ -1,4 +1,4 @@
 mt
 ==
 
-MT Mobile terminated
+MT Message Terminated.
