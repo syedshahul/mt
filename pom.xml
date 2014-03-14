@@ -14,8 +14,8 @@
         <module>mt-ws</module>
         <module>mt-utils</module>
         <module>mt-service</module>
-	      <module>mt-client-mq</module>
-	      <module>mk-server-mq</module>
+	      <module>mt-emmit-mq</module>
+	      <module>mt-work-mq</module>
     </modules>
 
 
@@ -45,6 +45,19 @@
 		           <artifactId>mt-model</artifactId>
 		          <version>1.0</version>
 	         </dependency>
+
+	         <dependency>
+		           <groupId>com.loycl.mt</groupId>
+		           <artifactId>mt-emmit-mq</artifactId>
+		          <version>1.0</version>
+	         </dependency>
+
+	         <dependency>
+		           <groupId>com.loycl.mt</groupId>
+		           <artifactId>mt-work-mq</artifactId>
+		          <version>1.0</version>
+	         </dependency>
+
 	        <!-- Module dependency ends -->
 
 	        <!-- Servlet-->
