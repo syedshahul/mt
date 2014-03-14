@@ -7,48 +7,55 @@
        xmlns:cxf="http://cxf.apache.org/core"
        xsi:schemaLocation="
 http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 http://www.springframework.org/schema/context
-http://www.springframework.org/schema/context/spring-context-3.2.xsd
+http://www.springframework.org/schema/context/spring-context-4.0.xsd
 http://www.springframework.org/schema/tx
-http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 http://cxf.apache.org/jaxrs
 http://cxf.apache.org/schemas/jaxrs.xsd
 http://cxf.apache.org/core
 http://cxf.apache.org/schemas/core.xsd">
 
     <import resource="classpath:META-INF/cxf/cxf.xml"/>
-    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
-    <import resource="classpath:META-INF/cxf/cxf-extension-http.xml"/>
+	<!--<import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+			<import resource="classpath:META-INF/cxf/cxf-extension-http.xml"/>-->
+
+	<tx:annotation-driven/>
+
+	<!-- Activates scanning of @Autowired -->
+	<context:annotation-config/>
 
     <context:component-scan base-package="com.loycl.mt"/>
     <context:component-scan base-package="com.loycl.mt.rest"/>
     <context:component-scan base-package="com.loycl.mt.service"/>
+	  <context:component-scan base-package="com.loycl.mt.model"/>
 
-    <tx:annotation-driven/>
 
-    <!-- Activates scanning of @Autowired -->
-    <context:annotation-config/>
-
-    <!-- auto proxy -->
-    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+	<!-- auto proxy -->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
 
     <bean class="com.loycl.mt.utils.validation.ValidationHelper"/>
-    <!-- CXF config -->
-    <jaxrs:server id="service" address="/">
+	<!-- CXF config -->
+	<jaxrs:server id="service"
+	              address="/">
         <jaxrs:serviceBeans>
             <bean class="com.loycl.mt.rest.impl.SampleRestImpl"/>
         </jaxrs:serviceBeans>
         <jaxrs:extensionMappings>
-            <entry key="json" value="application/json"/>
-            <entry key="xml" value="application/xml"/>
-            <entry key="feed" value="application/atom+xml"/>
+          <entry key="xml"
+                 value="application/xml"/>
+	        <entry key="json"
+	               value="application/json"/>
+          <entry key="feed"
+                 value="application/atom+xml"/>
         </jaxrs:extensionMappings>
 
         <jaxrs:providers>
             <ref bean="jsonProvider"/>
+	          <ref bean="xsltProvider"/>
             <ref bean="jaxbProvider"/>
-            <!--<ref bean="atomFeedProvider"/>-->
+	        <!--<ref bean="atomFeedProvider"/>-->
         </jaxrs:providers>
 
         <jaxrs:features>
@@ -62,7 +69,8 @@ http://cxf.apache.org/schemas/core.xsd">
         <jaxrs:outInterceptors>
             <bean class="org.apache.cxf.jaxrs.provider.jsonp.JsonpPreStreamInterceptor"/>
             <bean class="org.apache.cxf.jaxrs.provider.jsonp.JsonpPostStreamInterceptor">
-                <property name="paddingEnd" value=")"/>
+                <property name="paddingEnd"
+                          value=")"/>
             </bean>
         </jaxrs:outInterceptors>
     </jaxrs:server>
@@ -72,6 +80,9 @@ http://cxf.apache.org/schemas/core.xsd">
           class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
     <bean id="jaxbProvider"
           class="org.apache.cxf.jaxrs.provider.JAXBElementProvider"/>
+	  <bean id="xsltProvider"
+	        class="org.apache.cxf.jaxrs.provider.XSLTJaxbProvider"/>
+
 
     <bean id="logInbound"
           class="org.apache.cxf.interceptor.LoggingInInterceptor"/>

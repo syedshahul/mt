@@ -14,11 +14,15 @@
 
     <dependencies>
         <!-- Module dependency-->
-        <dependency>
+
+	    <dependency>
             <groupId>com.loycl.mt</groupId>
             <artifactId>mt-utils</artifactId>
         </dependency>
-
+	       <dependency>
+            <groupId>com.loycl.mt</groupId>
+            <artifactId>mt-model</artifactId>
+        </dependency>
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
@@ -28,6 +32,11 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+	     <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+	    </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>

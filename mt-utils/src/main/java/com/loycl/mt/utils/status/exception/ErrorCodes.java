@@ -5,8 +5,7 @@ package com.loycl.mt.utils.status.exception;
  * ServiceErrors 100-199 ControllerError 200-299 ModelError 300-399 The project
  * should provide the detailed error codes.
  * <p/>
- * http://static.springsource.org/spring/docs/3.0
- * .x/javadoc-api/org/springframework/http/HttpStatus.html
+ * http://static.springsource.org/spring/docs/3.0 .x/javadoc-api/org/springframework/http/HttpStatus.html
  *
  * @author: Syed Shahul
  */
@@ -118,9 +117,9 @@ public enum ErrorCodes {
 	 * private constructor for enum.
 	 *
 	 * @param code
-	 * 		errorCode.
+	 * 	errorCode.
 	 * @param message
-	 * 		errorMessage to understand errorCode.
+	 * 	errorMessage to understand errorCode.
 	 */
 	private ErrorCodes(final int code, final String message) {
 		this.errorCode = code;

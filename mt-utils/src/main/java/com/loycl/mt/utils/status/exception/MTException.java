@@ -40,7 +40,7 @@ public class MTException extends Exception {
 	 * constructor to wrap the generic exception.
 	 *
 	 * @param errorCode
-	 * 		exception
+	 * 	exception
 	 */
 	public MTException(final ErrorCodes errorCode) {
 		super();
@@ -51,7 +51,7 @@ public class MTException extends Exception {
 	 * constructor to wrap the generic exception.
 	 *
 	 * @param e
-	 * 		exception
+	 * 	exception
 	 */
 	public MTException(final Exception e) {
 		super(e);
@@ -61,7 +61,7 @@ public class MTException extends Exception {
 	 * constructor to wrap the generic exception.
 	 *
 	 * @param message
-	 * 		exception message.
+	 * 	exception message.
 	 */
 	public MTException(final String message) {
 		super(message);
@@ -71,9 +71,9 @@ public class MTException extends Exception {
 	 * Instantiates a new price net exception.
 	 *
 	 * @param errorCode
-	 * 		the error code
+	 * 	the error code
 	 * @param errorMessage
-	 * 		the error message
+	 * 	the error message
 	 */
 	public MTException(ErrorCodes errorCode, final String errorMessage) {
 		super();
@@ -85,9 +85,9 @@ public class MTException extends Exception {
 	 * constructor to wrap entity.
 	 *
 	 * @param e
-	 * 		exception
+	 * 	exception
 	 * @param errorName
-	 * 		the error name
+	 * 	the error name
 	 */
 	public MTException(final Exception e, final String errorName) {
 		super(e);
@@ -98,28 +98,27 @@ public class MTException extends Exception {
 	 * Instantiates a new price net exception.
 	 *
 	 * @param e
-	 * 		the e
+	 * 	the e
 	 * @param errorCode
-	 * 		the error code
+	 * 	the error code
 	 * @param errorMessage
-	 * 		the error message
+	 * 	the error message
 	 */
 	public MTException(final Exception e, ErrorCodes errorCode,
-                       final String errorMessage) {
+	                   final String errorMessage) {
 		super(e);
 		setErrorCode(errorCode);
 		setErrorMessage(errorMessage);
 	}
 
 	public MTException(final Exception e, ErrorCodes errorCode,
-                       final List<String> errorMessages) {
+	                   final List<String> errorMessages) {
 		super(e);
 		setErrorCode(errorCode);
 		setErrorMessages(errorMessages);
 	}
 
-	public MTException(ErrorCodes errorCode,
-                       final List<String> errorMessages) {
+	public MTException(ErrorCodes errorCode, final List<String> errorMessages) {
 		setErrorCode(errorCode);
 		setErrorMessages(errorMessages);
 	}
@@ -137,7 +136,7 @@ public class MTException extends Exception {
 	 * setErrorMessage.
 	 *
 	 * @param errorMessage
-	 * 		error message from the define method.
+	 * 	error message from the define method.
 	 */
 	public final void setErrorMessage(final String errorMessage) {
 		this.errorMessage = errorMessage;
@@ -156,7 +155,7 @@ public class MTException extends Exception {
 	 * setErrorMessages.
 	 *
 	 * @param errorMessages
-	 * 		error messages from the define method.
+	 * 	error messages from the define method.
 	 */
 	public void setErrorMessages(final List<String> errorMessages) {
 		this.errorMessages = errorMessages;
@@ -175,7 +174,7 @@ public class MTException extends Exception {
 	 * setSource.
 	 *
 	 * @param source
-	 * 		source from the define method.
+	 * 	source from the define method.
 	 */
 	public void setSource(final Object source) {
 		this.source = source;
@@ -194,7 +193,7 @@ public class MTException extends Exception {
 	 * Sets the error name.
 	 *
 	 * @param errorName
-	 * 		the errorName to set
+	 * 	the errorName to set
 	 */
 	public final void setErrorName(final String errorName) {
 		this.errorName = errorName;
@@ -204,7 +203,7 @@ public class MTException extends Exception {
 	 * set the appropriate errorCode.
 	 *
 	 * @param errorCode
-	 * 		errorCode to be used.
+	 * 	errorCode to be used.
 	 */
 	public final void setErrorCode(final ErrorCodes errorCode) {
 		this.errorCode = errorCode;
@@ -229,8 +228,7 @@ public class MTException extends Exception {
 	}
 
 	/**
-	 * Overrides the toString of ExceptionClass. It is in json format. It can
-	 * thus
+	 * Overrides the toString of ExceptionClass. It is in json format. It can thus
 	 * be easily passed to the UI layer.
 	 *
 	 * @return customized message.
@@ -238,20 +236,18 @@ public class MTException extends Exception {
 	@Override
 	public String toString() {
 		String messages = "";
-		if (this.errorMessages != null) {
-			for (String message : this.errorMessages) {
+		if(this.errorMessages != null) {
+			for(String message : this.errorMessages) {
 				messages = messages.concat(", ").concat(message);
 			}
 		}
 
 		StringBuilder stringBuilder = new StringBuilder()
-				//{"message":"message", "code":"400"}
-				.append("{").append("\"messages\":\"")
-				.append(this.errorMessage != null ? this.errorMessage
-						.concat(", ") : "")
-				.append(messages != null ? messages : "").append("\",")
-				.append("\"code\":\"").append(getErrorCode()).append("\"")
-				.append("}");
+			//{"message":"message", "code":"400"}
+			.append("{").append("\"messages\":\"").append(
+				this.errorMessage != null ? this.errorMessage.concat(", ") : "").append(
+				messages != null ? messages : "").append("\",").append("\"code\":\"")
+			.append(getErrorCode()).append("\"").append("}");
 		return stringBuilder.toString();
 	}
 }

@@ -13,35 +13,35 @@ import java.util.List;
 import java.util.Set;
 
 public class ValidationHelper {
-  private final ValidatorFactory factory;
-  private final Validator validator;
+	private final ValidatorFactory factory;
+	private final Validator validator;
 
-  public ValidationHelper() {
-    factory = Validation.buildDefaultValidatorFactory();
-    validator = factory.getValidator();
-  }
+	public ValidationHelper() {
+		factory = Validation.buildDefaultValidatorFactory();
+		validator = factory.getValidator();
+	}
 
-  public void validate(Object object) throws MTException {
-    Set<ConstraintViolation<Object>> constraintViolations =
-      validator.validate(object);
+	public void validate(Object object) throws MTException {
+		Set<ConstraintViolation<Object>> constraintViolations = validator.validate(
+			object);
 
-    if (!constraintViolations.isEmpty()) {
-      List<String> messages =
-        Lists.newArrayListWithCapacity(constraintViolations.size());
-      Iterator<ConstraintViolation<Object>> it =
-        constraintViolations.iterator();
+		if(!constraintViolations.isEmpty()) {
+			List<String> messages = Lists.newArrayListWithCapacity(
+				constraintViolations.size());
+			Iterator<ConstraintViolation<Object>> it =
+				constraintViolations.iterator();
 
-      while (it.hasNext()) {
-        messages.add(it.next().getMessage());
-      }
+			while(it.hasNext()) {
+				messages.add(it.next().getMessage());
+			}
 
-      MTException validationException =
-        new MTException(ErrorCodes.VALIDATION_EXCEPTION, messages);
+			MTException validationException = new MTException(
+				ErrorCodes.VALIDATION_EXCEPTION, messages);
 
-      validationException.setErrorMessages(messages);
-      validationException.setSource(object);
+			validationException.setErrorMessages(messages);
+			validationException.setSource(object);
 
-      throw validationException;
-    }
-  }
+			throw validationException;
+		}
+	}
 }

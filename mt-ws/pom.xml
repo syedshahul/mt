@@ -13,7 +13,7 @@
 
     <dependencies>
         <!-- Module dependency-->
-        <dependency>
+	    <dependency>
             <groupId>com.loycl.mt</groupId>
             <artifactId>mt-utils</artifactId>
         </dependency>
@@ -21,8 +21,12 @@
             <groupId>com.loycl.mt</groupId>
             <artifactId>mt-service</artifactId>
         </dependency>
-        <!-- Module dependency ends -->
-        <dependency>
+	     <dependency>
+            <groupId>com.loycl.mt</groupId>
+            <artifactId>mt-model</artifactId>
+        </dependency>
+	    <!-- Module dependency ends -->
+	    <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
@@ -97,11 +101,14 @@
             <artifactId>cxf-rt-rs-extension-search</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.sun.xml.stream</groupId>
-            <artifactId>sjsxp</artifactId>
-        </dependency>
-
+	    <!-- <dependency>
+									<groupId>com.sun.xml.stream</groupId>
+									<artifactId>sjsxp</artifactId>
+							</dependency>-->
+	    <dependency>
+                <groupId>xerces</groupId>
+                <artifactId>xercesImpl</artifactId>
+            </dependency>
     </dependencies>
     <build>
         <plugins>

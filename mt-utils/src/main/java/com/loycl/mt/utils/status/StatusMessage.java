@@ -34,9 +34,9 @@ public class StatusMessage implements Serializable {
 	 * Instantiates a new Status message.
 	 *
 	 * @param message
-	 * 		the message
+	 * 	the message
 	 * @param code
-	 * 		the code
+	 * 	the code
 	 */
 	public StatusMessage(String message, int code) {
 		this.message = message;
@@ -56,7 +56,7 @@ public class StatusMessage implements Serializable {
 	 * Sets message.
 	 *
 	 * @param message
-	 * 		the message
+	 * 	the message
 	 */
 	public void setMessage(String message) {
 		this.message = message;
@@ -75,7 +75,7 @@ public class StatusMessage implements Serializable {
 	 * Sets code.
 	 *
 	 * @param code
-	 * 		the code
+	 * 	the code
 	 */
 	public void setCode(int code) {
 		this.code = code;
@@ -86,10 +86,9 @@ public class StatusMessage implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		ToStringBuilder sb =
-				new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE)
-						.append("{code:", this.getCode())
-						.append(", message:", this.getMessage()).append("}");
+		ToStringBuilder sb = new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE)
+			.append("{code:", this.getCode()).append(", message:", this.getMessage())
+			.append("}");
 
 		return sb.toString();
 	}
