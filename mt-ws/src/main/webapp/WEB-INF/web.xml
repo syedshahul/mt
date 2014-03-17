@@ -9,7 +9,9 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:applicationContext-rest.xml
-            classpath:applicationContext-service.xml
+	        classpath:applicationContext-service.xml
+	        classpath:applicationContext-emit.xml
+	        classpath:applicationContext-work.xml
         </param-value>
     </context-param>
 

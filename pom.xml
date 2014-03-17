@@ -14,7 +14,7 @@
         <module>mt-ws</module>
         <module>mt-utils</module>
         <module>mt-service</module>
-	      <module>mt-emmit-mq</module>
+	      <module>mt-emit-mq</module>
 	      <module>mt-work-mq</module>
     </modules>
 
@@ -48,7 +48,7 @@
 
 	         <dependency>
 		           <groupId>com.loycl.mt</groupId>
-		           <artifactId>mt-emmit-mq</artifactId>
+		           <artifactId>mt-emit-mq</artifactId>
 		          <version>1.0</version>
 	         </dependency>
 
@@ -140,6 +140,7 @@
                 <artifactId>jackson-jaxrs-json-provider</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>com.fasterxml.jackson.module</groupId>
                 <artifactId>jackson-module-jaxb-annotations</artifactId>
@@ -166,6 +167,7 @@
                 <artifactId>guava</artifactId>
                 <version>16.0.1</version>
             </dependency>
+
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
@@ -183,6 +185,7 @@
                 <artifactId>jaxb-impl</artifactId>
                 <version>2.0.3</version>
             </dependency>
+
             <dependency>
                 <groupId>org.apache.xmlbeans</groupId>
                 <artifactId>xmlbeans</artifactId>
@@ -237,11 +240,18 @@
                 <artifactId>xercesImpl</artifactId>
                 <version>2.11.0</version>
             </dependency>
+
 	         <dependency>
             <groupId>com.rabbitmq</groupId>
             <artifactId>amqp-client</artifactId>
             <version>${rabbit.amqp.version}</version>
         </dependency>
+
+	        <dependency>
+  <groupId>org.springframework.amqp</groupId>
+  <artifactId>spring-rabbit</artifactId>
+  <version>1.2.1.RELEASE</version>
+</dependency>
 
         </dependencies>
     </dependencyManagement>

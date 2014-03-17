@@ -23,6 +23,17 @@
             <groupId>com.loycl.mt</groupId>
             <artifactId>mt-model</artifactId>
         </dependency>
+
+	         <dependency>
+		           <groupId>com.loycl.mt</groupId>
+		           <artifactId>mt-emit-mq</artifactId>
+	         </dependency>
+
+	         <dependency>
+		           <groupId>com.loycl.mt</groupId>
+		           <artifactId>mt-work-mq</artifactId>
+	         </dependency>
+
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
