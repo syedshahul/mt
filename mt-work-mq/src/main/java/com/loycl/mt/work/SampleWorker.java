@@ -7,4 +7,5 @@ import com.loycl.mt.utils.status.exception.MTException;
  */
 public interface SampleWorker {
 	void receive(String data) throws MTException;
+//	void receiveA() throws MTException;
 }

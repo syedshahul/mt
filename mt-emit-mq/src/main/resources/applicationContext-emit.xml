@@ -18,6 +18,8 @@ http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
 	<!-- Activates scanning of @Autowired -->
 	<context:annotation-config/>
+	 <rabbit:queue name="sms.q.1"/>
+	<rabbit:queue name="sms.q.2"/>
 
 	<rabbit:connection-factory
 			id="amqpConnectionFactory"
@@ -28,17 +30,18 @@ http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 			virtual-host="#{ systemEnvironment['MT_RABBIT_MQ_VHOST']}"
 			channel-cache-size="#{ systemEnvironment['MT_RABBIT_MQ_CACHE_SIZE']}"/>
 
-		<rabbit:queue name="myQueue" />
+		<!--<rabbit:queue name="myQueue" />-->
 
-	<rabbit:topic-exchange name="myExchange">
+	<rabbit:topic-exchange name="mt.topic.exchange.sms">
     <rabbit:bindings>
-        <rabbit:binding queue="myQueue" pattern="foo.*" />
+        <rabbit:binding  queue="sms.q.1" pattern="route.sms.*"/>
     </rabbit:bindings>
 </rabbit:topic-exchange>
 
   <rabbit:template id="amqpTemplate"
                  connection-factory="amqpConnectionFactory"
-                 exchange="myExchange" routing-key="foo.bar"/>
+                 exchange="mt.topic.exchange.sms"
+                 routing-key="route.sms"/>
 
 	<rabbit:admin connection-factory="amqpConnectionFactory"/>
 
