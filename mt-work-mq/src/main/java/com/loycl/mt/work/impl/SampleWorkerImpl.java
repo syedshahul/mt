@@ -1,5 +1,6 @@
 package com.loycl.mt.work.impl;
 
+import com.google.common.base.Strings;
 import com.loycl.mt.utils.status.exception.MTException;
 import com.loycl.mt.work.SampleWorker;
 import com.rabbitmq.client.Channel;
@@ -14,24 +15,10 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration("sampleWorker")
 public class SampleWorkerImpl implements ChannelAwareMessageListener{
-	//private RabbitTemplate amqpTemplate;
 
 	@Override public void onMessage(Message message, Channel channel)
 		throws Exception {
-		System.out.println("onMessage : "+message.getBody());
+		System.out.println("onMessage : "+ new String(message.getBody()));
 	}
 
-
-	/*@Override public void receive(String data) throws MTException {
-	 System.out.println("sampleWorker : "+data);
-	}*/
-
-	/*@Override public void receiveA() throws MTException {
-		System.out.println("receiveA : "+amqpTemplate.receive());
-	}
-*/
-	/*@Autowired
-	public void setAmqpTemplate(RabbitTemplate amqpTemplate) {
-		this.amqpTemplate = amqpTemplate;
-	}*/
 }

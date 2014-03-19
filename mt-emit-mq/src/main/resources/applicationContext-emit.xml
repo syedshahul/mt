@@ -31,25 +31,23 @@ http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 			channel-cache-size="#{ systemEnvironment['MT_RABBIT_MQ_CACHE_SIZE']}"/>
 
 		<!--<rabbit:queue name="myQueue" />-->
+	<rabbit:queue name="sms.q.1"/>
+	<rabbit:queue name="sms.q.2"/>
 
 	<rabbit:topic-exchange name="mt.topic.exchange.sms">
     <rabbit:bindings>
-        <rabbit:binding  queue="sms.q.1" pattern="route.sms.*"/>
+        <rabbit:binding  queue="sms.q.1" pattern="mt.route.*"/>
     </rabbit:bindings>
 </rabbit:topic-exchange>
 
   <rabbit:template id="amqpTemplate"
                  connection-factory="amqpConnectionFactory"
                  exchange="mt.topic.exchange.sms"
-                 routing-key="route.sms"/>
+                 routing-key="mt.route.sms"/>
 
 	<rabbit:admin connection-factory="amqpConnectionFactory"/>
-
-
-
 
 	<!-- auto proxy -->
 	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
 
 </beans>
-
