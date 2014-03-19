@@ -2,6 +2,8 @@ package com.loycl.mt.emit.impl;
 
 import com.loycl.mt.emit.SampleEmitter;
 import com.loycl.mt.utils.status.exception.MTException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -13,13 +15,15 @@ import java.util.Date;
  */
 @Configuration("sampleEmitter")
 public class SampleEmitterImpl implements SampleEmitter{
+	private static final Logger LOGGER =
+		LoggerFactory.getLogger(SampleEmitterImpl.class);
 
 	private RabbitTemplate amqpTemplate;
 
 	@Override public void emmit() throws MTException {
 		int i;
 		for (i=0;i<100;i++){
-			System.out.println(new Date().toString());
+		LOGGER.info(new Date().toString());
 			amqpTemplate.convertAndSend(new Date().toString());
 		}
 	}
