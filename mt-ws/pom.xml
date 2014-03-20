@@ -113,6 +113,10 @@
 						<groupId>com.sun.xml.stream</groupId>
 						<artifactId>sjsxp</artifactId>
 				</dependency>-->
+	   <dependency>
+	<groupId>com.lmax</groupId>
+	<artifactId>disruptor</artifactId>
+	   </dependency>
 
    </dependencies>
    <build>

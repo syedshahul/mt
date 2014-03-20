@@ -1,5 +1,6 @@
 package com.loycl.mt.emit.impl;
 
+import com.google.common.base.Strings;
 import com.loycl.mt.emit.SampleEmitter;
 import com.loycl.mt.utils.status.exception.MTException;
 import org.slf4j.Logger;
@@ -23,8 +24,8 @@ public class SampleEmitterImpl implements SampleEmitter{
 	@Override public void emmit() throws MTException {
 		int i;
 		for (i=0;i<100;i++){
-		LOGGER.info(new Date().toString());
-			amqpTemplate.convertAndSend(new Date().toString());
+		  LOGGER.info(Strings.padStart((""+i),3,'0'));
+			amqpTemplate.convertAndSend(Strings.padStart((""+i),3,'0'));
 		}
 	}
 
