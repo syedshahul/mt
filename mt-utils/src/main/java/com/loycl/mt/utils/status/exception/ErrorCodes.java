@@ -1,5 +1,8 @@
 package com.loycl.mt.utils.status.exception;
 
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+
 /**
  * Generic Error Codes for the project. Suggested ErrorCode ranges:
  * ServiceErrors 100-199 ControllerError 200-299 ModelError 300-399 The project
@@ -91,17 +94,17 @@ public enum ErrorCodes {
 	/**
 	 * The Not available.
 	 */
-	NotAvailable(103, "NotAvailable"),
+	NotAvailable(103, "Not available"),
 
 	/**
 	 * The Operation returned no results.
 	 */
-	OperationReturnedNoResults(104, "OperationReturnedNoResults"),
+	OperationReturnedNoResults(104, "Operation returned no results"),
 
 	/**
 	 * The Params not correct.
 	 */
-	ParamsNotCorrect(105, "ParamsNotCorrect");
+	ParamsNotCorrect(105, "Params not correct");
 
 	/**
 	 * error Message.
@@ -143,4 +146,13 @@ public enum ErrorCodes {
 	public int getErrorCode() {
 		return errorCode;
 	}
+
+	@Override
+	public String toString() {
+		return "ErrorCodes{" +
+		       "errorCode=" + errorCode +
+		       ", errorMessage='" + errorMessage + '\'' +
+		       '}';
+	}
+
 }

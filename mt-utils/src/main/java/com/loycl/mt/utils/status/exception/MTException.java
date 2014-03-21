@@ -1,6 +1,16 @@
 package com.loycl.mt.utils.status.exception;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,223 +18,67 @@ import java.util.List;
  *
  * @author: Syed Shahul
  */
-public class MTException extends Exception {
-	private static final long serialVersionUID = -3346790275219831279L;
 
-	/**
-	 * error code to set.
-	 */
-	private ErrorCodes errorCode = ErrorCodes.DefaultErrorCode;
+public class MTException extends Exception implements Serializable{
 
-	/**
-	 * className.
-	 */
-	private String errorName;
+	private static final long serialVersionUID = -8215491669064289884L;
 
-	/**
-	 * The error message.
-	 */
-	private String errorMessage;
 
-	/**
-	 * The error messages.
-	 */
+	private List<ErrorCodes> errorCodes;
+
 	private List<String> errorMessages;
 
+	private String errorCause;
 	/**
 	 * The source that caused the exception.
 	 */
+	@XmlTransient
 	private Object source;
 
 	/**
-	 * constructor to wrap the generic exception.
-	 *
-	 * @param errorCode
-	 * 	exception
+	 * Default constructor is required for JAXB conversion.
 	 */
-	public MTException(final ErrorCodes errorCode) {
-		super();
-		this.errorCode = errorCode;
+	public MTException() {
 	}
 
-	/**
-	 * constructor to wrap the generic exception.
-	 *
-	 * @param e
-	 * 	exception
-	 */
-	public MTException(final Exception e) {
-		super(e);
+	public MTException(List<ErrorCodes> errorCodes, List<String> errorMessages,
+	                   String errorCause, Object source) {
+		this.errorCodes = errorCodes;
+		this.errorMessages = errorMessages;
+		this.errorCause = errorCause;
+		this.source=source;
 	}
 
-	/**
-	 * constructor to wrap the generic exception.
-	 *
-	 * @param message
-	 * 	exception message.
-	 */
-	public MTException(final String message) {
-		super(message);
+	public List<ErrorCodes> getErrorCodes() {
+		return errorCodes;
 	}
 
-	/**
-	 * Instantiates a new price net exception.
-	 *
-	 * @param errorCode
-	 * 	the error code
-	 * @param errorMessage
-	 * 	the error message
-	 */
-	public MTException(ErrorCodes errorCode, final String errorMessage) {
-		super();
-		setErrorCode(errorCode);
-		setErrorMessage(errorMessage);
+	public void setErrorCodes(List<ErrorCodes> errorCodes) {
+		this.errorCodes = errorCodes;
 	}
 
-	/**
-	 * constructor to wrap entity.
-	 *
-	 * @param e
-	 * 	exception
-	 * @param errorName
-	 * 	the error name
-	 */
-	public MTException(final Exception e, final String errorName) {
-		super(e);
-		setErrorName(errorName);
+	public String getErrorCause() {
+		return errorCause;
 	}
 
-	/**
-	 * Instantiates a new price net exception.
-	 *
-	 * @param e
-	 * 	the e
-	 * @param errorCode
-	 * 	the error code
-	 * @param errorMessage
-	 * 	the error message
-	 */
-	public MTException(final Exception e, ErrorCodes errorCode,
-	                   final String errorMessage) {
-		super(e);
-		setErrorCode(errorCode);
-		setErrorMessage(errorMessage);
+	public void setErrorCause(String errorCause) {
+		this.errorCause = errorCause;
 	}
 
-	public MTException(final Exception e, ErrorCodes errorCode,
-	                   final List<String> errorMessages) {
-		super(e);
-		setErrorCode(errorCode);
-		setErrorMessages(errorMessages);
-	}
-
-	public MTException(ErrorCodes errorCode, final List<String> errorMessages) {
-		setErrorCode(errorCode);
-		setErrorMessages(errorMessages);
-	}
-
-	/**
-	 * Gets the error message.
-	 *
-	 * @return errorMessage error message
-	 */
-	public String getErrorMessage() {
-		return errorMessage;
-	}
-
-	/**
-	 * setErrorMessage.
-	 *
-	 * @param errorMessage
-	 * 	error message from the define method.
-	 */
-	public final void setErrorMessage(final String errorMessage) {
-		this.errorMessage = errorMessage;
-	}
-
-	/**
-	 * Gets the error messages.
-	 *
-	 * @return errorMessages error messages
-	 */
 	public List<String> getErrorMessages() {
 		return errorMessages;
 	}
 
-	/**
-	 * setErrorMessages.
-	 *
-	 * @param errorMessages
-	 * 	error messages from the define method.
-	 */
-	public void setErrorMessages(final List<String> errorMessages) {
+	public void setErrorMessages(List<String> errorMessages) {
 		this.errorMessages = errorMessages;
 	}
 
-	/**
-	 * Gets the source.
-	 *
-	 * @return source
-	 */
 	public Object getSource() {
 		return source;
 	}
 
-	/**
-	 * setSource.
-	 *
-	 * @param source
-	 * 	source from the define method.
-	 */
-	public void setSource(final Object source) {
+	public void setSource(Object source) {
 		this.source = source;
-	}
-
-	/**
-	 * Gets the error name.
-	 *
-	 * @return the errorName
-	 */
-	public String getErrorName() {
-		return errorName;
-	}
-
-	/**
-	 * Sets the error name.
-	 *
-	 * @param errorName
-	 * 	the errorName to set
-	 */
-	public final void setErrorName(final String errorName) {
-		this.errorName = errorName;
-	}
-
-	/**
-	 * set the appropriate errorCode.
-	 *
-	 * @param errorCode
-	 * 	errorCode to be used.
-	 */
-	public final void setErrorCode(final ErrorCodes errorCode) {
-		this.errorCode = errorCode;
-	}
-
-	/**
-	 * get Error Code.
-	 *
-	 * @return int. error code
-	 */
-	public int getErrorCode() {
-		return this.errorCode.getErrorCode();
-	}
-
-	/**
-	 * get Error Code detail.
-	 *
-	 * @return int. error code detail
-	 */
-	public String getErrorCodeDetail() {
-		return this.errorCode.getErrorMessage();
 	}
 
 	/**
@@ -233,21 +87,12 @@ public class MTException extends Exception {
 	 *
 	 * @return customized message.
 	 */
-	@Override
-	public String toString() {
-		String messages = "";
-		if(this.errorMessages != null) {
-			for(String message : this.errorMessages) {
-				messages = messages.concat(", ").concat(message);
-			}
-		}
-
-		StringBuilder stringBuilder = new StringBuilder()
-			//{"message":"message", "code":"400"}
-			.append("{").append("\"messages\":\"").append(
-				this.errorMessage != null ? this.errorMessage.concat(", ") : "").append(
-				messages != null ? messages : "").append("\",").append("\"code\":\"")
-			.append(getErrorCode()).append("\"").append("}");
-		return stringBuilder.toString();
+	@Override public String toString() {
+		return "MTException{" +
+		       "errorCodes=" + errorCodes +
+		       ", errorMessages=" + errorMessages +
+		       ", errorCause='" + errorCause + '\'' +
+		       ", source=" + source +
+		       '}';
 	}
 }

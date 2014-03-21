@@ -55,6 +55,7 @@ http://cxf.apache.org/schemas/core.xsd">
             <ref bean="jsonProvider"/>
 	          <ref bean="xsltProvider"/>
             <ref bean="jaxbProvider"/>
+	          <ref bean="mtRSExceptionMapper"/>
 	        <!--<ref bean="atomFeedProvider"/>-->
         </jaxrs:providers>
 
