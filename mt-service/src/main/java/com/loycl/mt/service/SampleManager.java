@@ -1,5 +1,7 @@
 package com.loycl.mt.service;
 
+import com.loycl.mt.model.MtRequest;
+import com.loycl.mt.model.MtResponse;
 import com.loycl.mt.model.Sample;
 import com.loycl.mt.utils.status.exception.MTException;
 
@@ -15,4 +17,6 @@ public interface SampleManager {
 	 * @return the service
 	 */
 	Sample getService() throws MTException;
+
+
 }

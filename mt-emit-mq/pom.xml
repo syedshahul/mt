@@ -20,6 +20,11 @@
             <artifactId>mt-utils</artifactId>
 	    </dependency>
 
+		  <dependency>
+            <groupId>com.loycl.mt</groupId>
+            <artifactId>mt-model</artifactId>
+	    </dependency>
+
 
 	    <dependency>
 	         <groupId>com.google.guava</groupId>

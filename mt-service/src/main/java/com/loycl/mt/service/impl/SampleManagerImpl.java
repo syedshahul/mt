@@ -1,6 +1,8 @@
 package com.loycl.mt.service.impl;
 
 import com.loycl.mt.emit.SampleEmitter;
+import com.loycl.mt.model.MtRequest;
+import com.loycl.mt.model.MtResponse;
 import com.loycl.mt.model.Sample;
 import com.loycl.mt.service.SampleManager;
 import com.loycl.mt.utils.status.exception.MTException;

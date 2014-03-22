@@ -22,74 +22,75 @@ public enum ErrorCodes {
 	/**
 	 * The Service error.
 	 */
-	ServiceError(100, "Error in service"),
-	CREATED(201, "CREATED"),
-	/* on success of DELETE request*/
+	ServiceError(100, "Error in service"), CREATED(201, "CREATED"),
+
+	/* on success of DELETE request */
 	ACCEPTED(202, "Accepted"),
-	/* on success of PUT request*/
-	NO_CONTENT(204, "No Content"),
-	CONFLICT(409, "Conflict"),
-	OPERATION_UNSUCCESSFUL(500, "Operation Unsuccessful, please try again"),
-	VALIDATION_EXCEPTION(400, "Validation Exception"),
+
+	/* on success of PUT request */
+	NO_CONTENT(204, "No Content"), CONFLICT(409, "Conflict"),
+	SYSTEM_EXCEPTION(500, "System exception"),
+	VALIDATION_EXCEPTION(400, "Validation exception"),
+	FAILED_TO_PARSE_DATA(501,"failed to parse data"),
 
 	/**
 	 * The Default error code.
 	 */
-	DefaultErrorCode(500, "Internal Server Error"),
+	DefaultErrorCode(500, "Internal server error"),
 
 	/* DAO Error Codes */
 
 	/**
 	 * The Duplicate entry.
 	 */
-	DuplicateEntry(301, "DuplicateEntry"),
+	DuplicateEntry(301, "Duplicate entry"),
 
 	/**
 	 * The Database error.
 	 */
-	DatabaseError(300, "DatabaseError"),
+	DatabaseError(300, "Database error"),
 
 	/**
 	 * The User not found.
 	 */
-	UserNotFound(302, "UserNotFound"),
+	UserNotFound(302, "User not found"),
 
 	/**
 	 * The Passwords do not match.
 	 */
-	PasswordsDoNotMatch(303, "PasswordsDoNotMatch"),
+	PasswordsDoNotMatch(303, "Passwords do not match"),
 
 	/**
 	 * The Already exists.
 	 */
-	AlreadyExists(304, "AlreadyExists"),
+	AlreadyExists(304, "Already exists"),
 
 	/**
 	 * The Controller error.
 	 */
-	ControllerError(305, "Error in Action"),
+	ControllerError(305, "Error in action"),
 
 	/**
 	 * The Data not found.
 	 */
-	DataNotFound(306, "DataNotFound"),
+	DataNotFound(306, "Data not found"),
 
 	/**
 	 * The Data not sufficient.
 	 */
-	DataNotSufficient(307, "DataNotSufficient"),
+	DataNotSufficient(307, "Data not sufficient"),
 
 	/* Service Error codes */
 
 	/**
 	 * The Params not sufficient.
 	 */
-	ParamsNotSufficient(101, "ParamsNotSufficient"),
+	ParamsNotSufficient(101, "Params not sufficient"),
 
 	/**
 	 * The Params empty.
 	 */
-	ParamsEmpty(102, "ParamsEmpty"),
+	ParamsEmpty(102, "Params empty"),
 
 	/**
 	 * The Not available.
@@ -119,13 +120,11 @@ public enum ErrorCodes {
 	/**
 	 * private constructor for enum.
 	 *
-	 * @param code
-	 * 	errorCode.
-	 * @param message
-	 * 	errorMessage to understand errorCode.
+	 * @param code    errorCode.
+	 * @param message errorMessage to understand errorCode.
 	 */
 	private ErrorCodes(final int code, final String message) {
-		this.errorCode = code;
+		this.errorCode    = code;
 		this.errorMessage = message;
 	}
 

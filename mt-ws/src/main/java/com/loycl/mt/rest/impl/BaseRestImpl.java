@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class BaseRestImpl {
 	protected SampleManager sampleManager;
 
+
 	@Autowired
 	public void setSampleManager(SampleManager sampleManager) {
 		this.sampleManager = sampleManager;

@@ -3,6 +3,7 @@ package com.loycl.mt.emit.impl;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.loycl.mt.emit.SampleEmitter;
+import com.loycl.mt.model.MtRequest;
 import com.loycl.mt.utils.status.exception.ErrorCodes;
 import com.loycl.mt.utils.status.exception.MTException;
 import org.slf4j.Logger;
@@ -33,6 +34,7 @@ public class SampleEmitterImpl implements SampleEmitter{
 			amqpTemplate.convertAndSend(Strings.padStart((""+i),3,'0'));
 		}
 	}
+
 
 	@Autowired
 	public void setAmqpTemplate(RabbitTemplate amqpTemplate) {

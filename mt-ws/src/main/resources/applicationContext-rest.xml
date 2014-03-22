@@ -40,7 +40,9 @@ http://cxf.apache.org/schemas/core.xsd">
 	<jaxrs:server id="service"
 	              address="/">
         <jaxrs:serviceBeans>
+	          <bean class="com.loycl.mt.rest.impl.BaseRestImpl"/>
             <bean class="com.loycl.mt.rest.impl.SampleRestImpl"/>
+	          <bean class="com.loycl.mt.rest.impl.MtJaxRsImpl"/>
         </jaxrs:serviceBeans>
         <jaxrs:extensionMappings>
           <entry key="xml"

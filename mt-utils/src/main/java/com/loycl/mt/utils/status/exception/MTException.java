@@ -23,7 +23,6 @@ public class MTException extends Exception implements Serializable{
 
 	private static final long serialVersionUID = -8215491669064289884L;
 
-
 	private List<ErrorCodes> errorCodes;
 
 	private List<String> errorMessages;
@@ -42,7 +41,8 @@ public class MTException extends Exception implements Serializable{
 	}
 
 	public MTException(List<ErrorCodes> errorCodes, List<String> errorMessages,
-	                   String errorCause, Object source) {
+	                   String errorCause, Object source, final Exception e) {
+		super(e);
 		this.errorCodes = errorCodes;
 		this.errorMessages = errorMessages;
 		this.errorCause = errorCause;

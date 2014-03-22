@@ -6,44 +6,45 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 /**
  * @author: Syed Shahul
  */
-
-@XmlRootElement(name = "sample") @XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "mtResponse") @XmlAccessorType(XmlAccessType.FIELD)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy.class)
-public class Sample implements Serializable {
+public class MtResponse implements Serializable{
+	
+	private static final long serialVersionUID = -3081516183308198744L;
+	/**
+	 * reference_no
+	 */
 
-	private static final long serialVersionUID = -697233093460220089L;
-	@XmlElement(name = "msg")
-	private String msg;
+	private String referenceNo;
 
 	/**
 	 * Default constructor is required for JAXB conversion.
 	 */
-	public Sample() {
+	public MtResponse() {
 	}
 
-	public Sample(String msg) {
-		this.msg = msg;
+	public MtResponse(String referenceNo) {
+		this.referenceNo = referenceNo;
 	}
 
-	public String getMsg() {
-		return msg;
+	public String getReferenceNo() {
+		return referenceNo;
 	}
 
-	public void setMsg(String msg) {
-		this.msg = msg;
+	public void setReferenceNo(String referenceNo) {
+		this.referenceNo = referenceNo;
 	}
 
 	@Override public String toString() {
-		return "Sample{" +
-		       "msg='" + msg + '\'' +
+		return "MtResponse{" +
+		       "referenceNo='" + referenceNo + '\'' +
 		       '}';
 	}
 }
