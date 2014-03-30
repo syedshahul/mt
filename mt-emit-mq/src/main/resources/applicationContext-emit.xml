@@ -18,13 +18,11 @@ http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
 	<!-- Activates scanning of @Autowired -->
 	<context:annotation-config/>
-	 <rabbit:queue name="sms.q.1"/>
-	<rabbit:queue name="sms.q.2"/>
 
 	<rabbit:connection-factory
 			id="amqpConnectionFactory"
-			host="#{ systemEnvironment['MT_RABBIT_MQ_HOST']?:'localhost' }"
-			port="#{ systemEnvironment['MT_RABBIT_MQ_PORT']?:'5672' }"
+			host="#{ systemEnvironment['MT_RABBIT_MQ_HOST'] }"
+			port="#{ systemEnvironment['MT_RABBIT_MQ_PORT']}"
 			username="#{ systemEnvironment['MT_RABBIT_MQ_UNAME']}"
 			password="#{ systemEnvironment['MT_RABBIT_MQ_PASSCODE']}"
 			virtual-host="#{ systemEnvironment['MT_RABBIT_MQ_VHOST']}"

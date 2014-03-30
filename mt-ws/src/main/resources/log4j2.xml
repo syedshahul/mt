@@ -12,13 +12,16 @@
 	   <RandomAccessFile name="RandomAccessFile" fileName="logs/mt-ws-async.log"
 	                     immediateFlush="false" append="false">
          <PatternLayout>
-            <Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
+            <!--<Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>-->
+	         <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [MT] %p %c{1}.%M(%L) | %m%n</Pattern>
          </PatternLayout>
       </RandomAccessFile>
+
       <RollingFile name="RollingFile" fileName="logs/mt-ws.log"
                    filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
          <PatternLayout>
-            <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            <!--<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>-->
+	         <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [MT] %p %c{1}.%M(%L) | %m%n</Pattern>
          </PatternLayout>
          <Policies>
             <TimeBasedTriggeringPolicy />
@@ -29,15 +32,22 @@
    </Appenders>
    <Loggers>
       <!-- pattern layout actually uses location, so we need to include it -->
-	   <AsyncLogger name="com.loycl.mt.async" level="info" includeLocation="true">
-         <AppenderRef ref="RandomAccessFile" />
-         <AppenderRef ref="RollingFile" />
-      </AsyncLogger>
-	   <!--  <Root level="info" includeLocation="false">
-			<AppenderRef ref="RandomAccessFile"/>
-			</Root>-->
-	   <Logger name="com.loycl.mt" level="all">
-         <AppenderRef ref="Console" />
-      </Logger>
+	   <AsyncLogger name="com.loycl.mt.async" level="all" includeLocation="true">
+         <!--<AppenderRef ref="RandomAccessFile" />-->
+         <!--<AppenderRef ref="RollingFile" />-->
+     </AsyncLogger>
+
+	   <Logger name="com.loycl.mt" level="all" additivity="false">
+         <AppenderRef ref="RandomAccessFile"/>
+		     <AppenderRef ref="RollingFile" />
+		     <AppenderRef ref="Console" />
+     </Logger>
+
+	   <Root level="info" includeLocation="false">
+			   <AppenderRef ref="RandomAccessFile"/>
+		     <AppenderRef ref="RollingFile" />
+		     <AppenderRef ref="Console" />
+		 </Root>
+
    </Loggers>
 </Configuration>

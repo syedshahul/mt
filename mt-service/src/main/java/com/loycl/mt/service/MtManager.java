@@ -9,4 +9,6 @@ import com.loycl.mt.utils.status.exception.MTException;
  */
 public interface MtManager {
 	MtResponse pushMT(MtRequest mtRequest) throws MTException;
+
+	void processMT(MtRequest mtRequest) throws MTException;
 }

@@ -11,6 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
     <artifactId>mt-model</artifactId>
+
 	<dependencies>
 		<dependency>
                 <groupId>com.fasterxml.jackson.module</groupId>

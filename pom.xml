@@ -116,6 +116,11 @@
                 <version>${spring.version}</version>
             </dependency>
 
+	        <dependency>
+	<groupId>org.testng</groupId>
+	<artifactId>testng</artifactId>
+	<version>6.8.8</version>
+</dependency>
 	        <!-- Spring configuration ends -->
 	        <!-- Logger-->
 	        <dependency>
@@ -157,6 +162,13 @@
                 <artifactId>hibernate-validator</artifactId>
                 <version>${hibernate.validator.version}</version>
             </dependency>
+
+<dependency>
+                    <groupId>javax.el</groupId>
+                    <artifactId>javax.el-api</artifactId>
+                    <version>2.2.4</version>
+                    </dependency>
+
 	        <!-- Hibernate ends-->
 	        <!-- Redis-->
 	        <dependency>
@@ -232,6 +244,12 @@
                 <artifactId>cxf-rt-rs-extension-search</artifactId>
                 <version>${cxf.version}</version>
             </dependency>
+
+	        <dependency>
+	<groupId>org.apache.cxf</groupId>
+	<artifactId>cxf-rt-rs-service-description</artifactId>
+	<version>${cxf.version}</version>
+</dependency>
 
 	        <!--CXF ends-->
 	        <!-- <dependency>
@@ -328,8 +346,17 @@
                     <target>${project.java.version}</target>
                 </configuration>
             </plugin>
+
+	         <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.17</version>
+      </plugin>
         </plugins>
     </build>
+
+
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.java.version>1.7</project.java.version>

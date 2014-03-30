@@ -12,10 +12,17 @@
     <artifactId>mt-utils</artifactId>
 
     <dependencies>
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
         </dependency>
+
+	    <dependency>
+                    <groupId>javax.el</groupId>
+                    <artifactId>javax.el-api</artifactId>
+                    </dependency>
+
 	    <!-- Compile dependencies -->
 	    <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>

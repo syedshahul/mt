@@ -23,6 +23,11 @@
          <artifactId>mt-service</artifactId>
       </dependency>
 
+	   <dependency>
+         <groupId>com.loycl.mt</groupId>
+         <artifactId>mt-work-mq</artifactId>
+      </dependency>
+
       <dependency>
          <groupId>com.loycl.mt</groupId>
          <artifactId>mt-model</artifactId>
@@ -74,6 +79,13 @@
          <scope>test</scope>
       </dependency>
 
+	    <dependency>
+	<groupId>org.testng</groupId>
+	<artifactId>testng</artifactId>
+	   </dependency>
+
+
+
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
@@ -109,6 +121,7 @@
          <groupId>org.apache.cxf</groupId>
          <artifactId>cxf-rt-rs-extension-search</artifactId>
       </dependency>
+
 	   <!-- <dependency>
 						<groupId>com.sun.xml.stream</groupId>
 						<artifactId>sjsxp</artifactId>

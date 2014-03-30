@@ -1,21 +1,22 @@
 package com.loycl.mt.utils.validation;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.loycl.mt.utils.status.exception.ErrorCodes;
 import com.loycl.mt.utils.status.exception.MTException;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+@Service("validationHelper")
 public class ValidationHelper {
 	private final ValidatorFactory factory;
 	private final Validator validator;

@@ -1,8 +1,6 @@
 package com.loycl.mt.service.impl;
 
 import com.loycl.mt.emit.SampleEmitter;
-import com.loycl.mt.model.MtRequest;
-import com.loycl.mt.model.MtResponse;
 import com.loycl.mt.model.Sample;
 import com.loycl.mt.service.SampleManager;
 import com.loycl.mt.utils.status.exception.MTException;
@@ -11,14 +9,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLOutput;
-
 
 /**
  * @author: Syed Shahul
  */
 @Service("sampleManager")
-public class SampleManagerImpl extends BaseManagerImpl
+public class SampleManagerImpl
 	implements SampleManager {
 	private static final Logger LOGGER =
 		LoggerFactory.getLogger(SampleManagerImpl.class);

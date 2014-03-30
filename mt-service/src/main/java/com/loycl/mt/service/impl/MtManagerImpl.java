@@ -1,11 +1,9 @@
 package com.loycl.mt.service.impl;
 
 import com.loycl.mt.emit.MtProducer;
-import com.loycl.mt.emit.SampleEmitter;
 import com.loycl.mt.model.MtRequest;
 import com.loycl.mt.model.MtResponse;
 import com.loycl.mt.service.MtManager;
-import com.loycl.mt.utils.generator.LongGenerator;
 import com.loycl.mt.utils.status.exception.MTException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,10 +21,16 @@ public class MtManagerImpl implements MtManager{
 	private MtProducer mtProducer;
 
 	@Override public MtResponse pushMT(MtRequest mtRequest) throws MTException {
-		if(LOGGER.isInfoEnabled()){
+	/*	if(LOGGER.isInfoEnabled()){
 			LOGGER.info("MtManagerImpl->pushMT");
-		}
+		}*/
 		return mtProducer.pushMT(mtRequest);
+	}
+
+	@Override public void processMT(MtRequest mtRequest) throws MTException {
+		if(LOGGER.isInfoEnabled()){
+			LOGGER.info("MtManagerImpl->processMT : {}",mtRequest.toString());
+		}
 	}
 
 	@Autowired

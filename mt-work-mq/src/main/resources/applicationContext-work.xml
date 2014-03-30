@@ -24,8 +24,8 @@ http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
 		<rabbit:connection-factory
 				id="amqpConnectionFactory"
-				host="#{ systemEnvironment['MT_RABBIT_MQ_HOST']?:'localhost' }"
-				port="#{ systemEnvironment['MT_RABBIT_MQ_PORT']?:'5672' }"
+				host="#{ systemEnvironment['MT_RABBIT_MQ_HOST']}"
+				port="#{ systemEnvironment['MT_RABBIT_MQ_PORT']}"
 				username="#{ systemEnvironment['MT_RABBIT_MQ_UNAME']}"
 				password="#{ systemEnvironment['MT_RABBIT_MQ_PASSCODE']}"
 				virtual-host="#{ systemEnvironment['MT_RABBIT_MQ_VHOST']}"
@@ -47,7 +47,8 @@ http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 	<rabbit:admin connection-factory="amqpConnectionFactory"/>
 
 	<rabbit:listener-container connection-factory="amqpConnectionFactory">
-    <rabbit:listener ref="sampleWorker" queue-names= "sms.q.1, sms.q.2"/>
+		<!-- adding more than one queue names will cause duplicate.-->
+    <rabbit:listener ref="mtWorkerImpl" queue-names= "sms.q.1"/>
  </rabbit:listener-container>
 
 </beans>

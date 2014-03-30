@@ -1,8 +1,5 @@
 package com.loycl.mt.utils.status.exception;
 
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-
 /**
  * Generic Error Codes for the project. Suggested ErrorCode ranges:
  * ServiceErrors 100-199 ControllerError 200-299 ModelError 300-399 The project

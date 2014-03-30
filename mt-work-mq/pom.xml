@@ -18,6 +18,13 @@
             <artifactId>mt-utils</artifactId>
 	    </dependency>
 
+
+		      <dependency>
+            <groupId>com.loycl.mt</groupId>
+            <artifactId>mt-model</artifactId>
+	    </dependency>
+
+
 	    <dependency>
 	<groupId>com.google.guava</groupId>
 	<artifactId>guava</artifactId>
@@ -27,6 +34,11 @@
             <groupId>com.rabbitmq</groupId>
             <artifactId>amqp-client</artifactId>
 	    </dependency>
+
+		    <dependency>
+            <groupId>com.loycl.mt</groupId>
+            <artifactId>mt-service</artifactId>
+        </dependency>
 
 		           <dependency>
             <groupId>redis.clients</groupId>

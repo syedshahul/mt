@@ -19,6 +19,5 @@ http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
 	<!-- auto proxy -->
 	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
-    <bean class="com.loycl.mt.utils.validation.ValidationHelper"/>
 </beans>
 

@@ -4,31 +4,24 @@ package com.loycl.mt.utils.conversion;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.loycl.mt.utils.status.exception.ErrorCodes;
 import com.loycl.mt.utils.status.exception.MTException;
 import org.apache.commons.lang3.StringUtils;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//~--- JDK imports ------------------------------------------------------------
-
 import java.io.IOException;
 import java.io.InputStream;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+//~--- JDK imports ------------------------------------------------------------
 
 public final class MapperUtil {
   private static final Logger LOGGER =

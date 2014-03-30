@@ -1,21 +1,14 @@
 package com.loycl.mt.emit.impl;
 
 import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
 import com.loycl.mt.emit.SampleEmitter;
-import com.loycl.mt.model.MtRequest;
-import com.loycl.mt.utils.status.exception.ErrorCodes;
 import com.loycl.mt.utils.status.exception.MTException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author: Syed Shahul
@@ -35,7 +28,7 @@ public class SampleEmitterImpl implements SampleEmitter{
 		}
 	}
 
-
+	@Qualifier("amqpTemplate")
 	@Autowired
 	public void setAmqpTemplate(RabbitTemplate amqpTemplate) {
 		this.amqpTemplate = amqpTemplate;
