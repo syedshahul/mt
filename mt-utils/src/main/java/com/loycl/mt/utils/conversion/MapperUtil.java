@@ -24,163 +24,168 @@ import java.util.Map;
 //~--- JDK imports ------------------------------------------------------------
 
 public final class MapperUtil {
-  private static final Logger LOGGER =
-    LoggerFactory.getLogger(MapperUtil.class);
-  private static final ObjectMapper MAPPER              =
-    JacksonConfig.createMapper();
-  private static final String       DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
+	private static final Logger LOGGER =
+			LoggerFactory.getLogger(MapperUtil.class);
+	private static final ObjectMapper MAPPER = JacksonConfig.createMapper();
+	private static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
 
-  /**
-   * Prevent any construction.
-   */
-  private MapperUtil() {
-    super();
-  }
+	/**
+	 * Prevent any construction.
+	 */
+	private MapperUtil() {
+		super();
+	}
 
-  public static <T> T convertToObjectOf(Class<T> clazz, Object object)
-          throws MTException {
-    try {
-      return MAPPER.convertValue(object, clazz);
-    } catch (Exception e) {
-      LOGGER.error("{}, {}", e.getMessage(), e.fillInStackTrace());
-	    throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
-	                                          ErrorCodes.FAILED_TO_PARSE_DATA),
-	                          null, null, null,e);
-    }
-  }
+	public static <T> T convertToObjectOf(Class<T> clazz, Object object)
+			throws MTException {
+		try {
+			return MAPPER.convertValue(object, clazz);
+		} catch (Exception e) {
+			LOGGER.error("{}, {}", e.getMessage(), e.fillInStackTrace());
+			throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
+			                                      ErrorCodes.FAILED_TO_PARSE_DATA),
+			                      null, null, null, e
+			);
+		}
+	}
 
-  public static <T> T convertToObjectOf(TypeReference<T> typeReference,
-          Object object)
-          throws MTException {
-    try {
-      return MAPPER.convertValue(object, typeReference);
-    } catch (Exception e) {
-      LOGGER.error("{}, {}", e.getMessage(), e.fillInStackTrace());
+	public static <T> T convertToObjectOf(TypeReference<T> typeReference,
+	                                      Object object) throws MTException {
+		try {
+			return MAPPER.convertValue(object, typeReference);
+		} catch (Exception e) {
+			LOGGER.error("{}, {}", e.getMessage(), e.fillInStackTrace());
 
-	    throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
-	                                          ErrorCodes.FAILED_TO_PARSE_DATA),
-	                          null, null, null,e);
-    }
-  }
+			throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
+			                                      ErrorCodes.FAILED_TO_PARSE_DATA),
+			                      null, null, null, e
+			);
+		}
+	}
 
-  public static <T> T readAsObjectOf(Class<T> clazz, String value)
-          throws MTException {
-    try {
-      return MAPPER.readValue(value, clazz);
-    } catch (Exception e) {
-      LOGGER.error("{}, {}", e.getMessage(), e.fillInStackTrace());
-	    throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
-	                                          ErrorCodes.FAILED_TO_PARSE_DATA),
-	                          null, null, null,e);
-    }
-  }
+	public static <T> T readAsObjectOf(Class<T> clazz, String value)
+			throws MTException {
+		try {
+			return MAPPER.readValue(value, clazz);
+		} catch (Exception e) {
+			LOGGER.error("{}, {}", e.getMessage(), e.fillInStackTrace());
+			throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
+			                                      ErrorCodes.FAILED_TO_PARSE_DATA),
+			                      null, null, null, e
+			);
+		}
+	}
 
-  public static <T> T readAsObjectOf(TypeReference<T> typeReference,
-                                     String value)
-          throws MTException {
-    try {
-      return MAPPER.readValue(value, typeReference);
-    } catch (IOException e) {
-      LOGGER.error("{}, {}", e.getMessage(), e.fillInStackTrace());
+	public static <T> T readAsObjectOf(TypeReference<T> typeReference,
+	                                   String value) throws MTException {
+		try {
+			return MAPPER.readValue(value, typeReference);
+		} catch (IOException e) {
+			LOGGER.error("{}, {}", e.getMessage(), e.fillInStackTrace());
 
-	    throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
-	                                          ErrorCodes.FAILED_TO_PARSE_DATA),
-	                          null, null, null,e);
-    }
-  }
+			throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
+			                                      ErrorCodes.FAILED_TO_PARSE_DATA),
+			                      null, null, null, e
+			);
+		}
+	}
 
-  public static String convertToString(Object object) throws MTException {
-    try {
-      return MAPPER.writeValueAsString(object);
-    } catch (IOException e) {
-      LOGGER.error("{}, {}", e.getMessage(), e.fillInStackTrace());
+	public static String convertToString(Object object) throws MTException {
+		try {
+			return MAPPER.writeValueAsString(object);
+		} catch (IOException e) {
+			LOGGER.error("{}, {}", e.getMessage(), e.fillInStackTrace());
 
-	    throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
-	                                          ErrorCodes.FAILED_TO_PARSE_DATA),
-	                          null, null, null, e);
-    }
-  }
+			throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
+			                                      ErrorCodes.FAILED_TO_PARSE_DATA),
+			                      null, null, null, e
+			);
+		}
+	}
 
-  /**
-   * Use JacksonConverter for date serialization and deserialization
-   *
-   * @param dateStr
-   * @return
-   * @throws MTException
-   */
-  @Deprecated
-  public static Date convertToDate(String dateStr) throws MTException {
-    try {
-      return convertToDate(dateStr, DEFAULT_DATE_FORMAT);
-    } catch (MTException e) {
-      LOGGER.error("{}, {}", e.getMessage(), e.fillInStackTrace());
+	/**
+	 * Use JacksonConverter for date serialization and deserialization
+	 *
+	 * @param dateStr
+	 * @return
+	 * @throws MTException
+	 */
+	@Deprecated
+	public static Date convertToDate(String dateStr) throws MTException {
+		try {
+			return convertToDate(dateStr, DEFAULT_DATE_FORMAT);
+		} catch (MTException e) {
+			LOGGER.error("{}, {}", e.getMessage(), e.fillInStackTrace());
 
-      throw e;
-    }
-  }
+			throw e;
+		}
+	}
 
-  /**
-   * Use JacksonConverter for date serialization and deserialization
-   *
-   * @param dateStr
-   * @param dateFormat
-   * @return
-   * @throws MTException
-   */
-  @Deprecated
-  public static Date convertToDate(String dateStr, String dateFormat)
-          throws MTException {
-    try {
-      DateFormat formatter = new SimpleDateFormat(dateFormat);
+	/**
+	 * Use JacksonConverter for date serialization and deserialization
+	 *
+	 * @param dateStr
+	 * @param dateFormat
+	 * @return
+	 * @throws MTException
+	 */
+	@Deprecated
+	public static Date convertToDate(String dateStr, String dateFormat)
+			throws MTException {
+		try {
+			DateFormat formatter = new SimpleDateFormat(dateFormat);
 
-      return new Date(formatter.parse(dateStr).getTime());
-    } catch (ParseException e) {
-      LOGGER.error("{}, {}", e.getMessage(), e.fillInStackTrace());
+			return new Date(formatter.parse(dateStr).getTime());
+		} catch (ParseException e) {
+			LOGGER.error("{}, {}", e.getMessage(), e.fillInStackTrace());
 
-	    throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
-	                                          ErrorCodes.FAILED_TO_PARSE_DATA),
-	                          null, null, null, e);
-    }
-  }
+			throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
+			                                      ErrorCodes.FAILED_TO_PARSE_DATA),
+			                      null, null, null, e
+			);
+		}
+	}
 
-  public static Map<String, Object> toMap(final String jsonString)
-          throws MTException {
-    try {
-      if (StringUtils.isBlank(jsonString)) {
-        return Collections.emptyMap();
-      }
+	public static Map<String, Object> toMap(final String jsonString)
+			throws MTException {
+		try {
+			if (StringUtils.isBlank(jsonString)) {
+				return Collections.emptyMap();
+			}
 
-      return MAPPER.readValue(jsonString,
-                              new TypeReference<Map<String, Object>>() {}
-      );
-    } catch (Exception cause) {
-      LOGGER.error("Problem decoding json string into map {}", cause);
+			return MAPPER
+					.readValue(jsonString, new TypeReference<Map<String, Object>>() {
+					});
+		} catch (Exception cause) {
+			LOGGER.error("Problem decoding json string into map {}", cause);
 
-	    throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
-	                                          ErrorCodes.FAILED_TO_PARSE_DATA),
-	                          null, null, null,cause);
-    }
-  }
+			throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
+			                                      ErrorCodes.FAILED_TO_PARSE_DATA),
+			                      null, null, null, cause
+			);
+		}
+	}
 
-  public static <K, V> Map<K, V> toMap(final InputStream inputStream)
-          throws MTException {
-    try {
-      if (inputStream == null) {
-        return Collections.emptyMap();
-      }
+	public static <K, V> Map<K, V> toMap(final InputStream inputStream)
+			throws MTException {
+		try {
+			if (inputStream == null) {
+				return Collections.emptyMap();
+			}
 
-      return MAPPER.readValue(inputStream, new TypeReference<Map<K, V>>() {}
-      );
-    } catch (Exception cause) {
-      LOGGER.error("Problem decoding inputstream data into map {}", cause);
+			return MAPPER.readValue(inputStream, new TypeReference<Map<K, V>>() {
+			});
+		} catch (Exception cause) {
+			LOGGER.error("Problem decoding inputstream data into map {}", cause);
 
-      throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
-                                            ErrorCodes.FAILED_TO_PARSE_DATA),
-                            null, null, null, cause);
-    }
-  }
+			throw new MTException(toErrorCodeList(ErrorCodes.SYSTEM_EXCEPTION,
+			                                      ErrorCodes.FAILED_TO_PARSE_DATA),
+			                      null, null, null, cause
+			);
+		}
+	}
 
-	public static List<ErrorCodes> toErrorCodeList(ErrorCodes... errorCodes){
-		 return Arrays.asList(errorCodes);
+	public static List<ErrorCodes> toErrorCodeList(ErrorCodes... errorCodes) {
+		return Arrays.asList(errorCodes);
 	}
 }

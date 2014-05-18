@@ -16,21 +16,22 @@ import javax.ws.rs.core.Response;
  * @author: Syed Shahul
  */
 @Service("mtJaxRs")
-public class MtJaxRsImpl implements MtJaxRs{
+public class MtJaxRsImpl implements MtJaxRs {
 	private static final Logger LOGGER =
-		LoggerFactory.getLogger(MtJaxRsImpl.class);
+			LoggerFactory.getLogger(MtJaxRsImpl.class);
 
 	private MtManager mtManager;
 
-	@Override public Response pushMT(String inputJson) throws MTException {
+	@Override
+	public Response pushMT(String inputJson) throws MTException {
 		/**
 		 * mobile_no
 		 * msg
 		 * reference_no
 		 */
-		MtRequest mtRequest =
-			MapperUtil.readAsObjectOf(MtRequest.class, inputJson);
-		/*if(LOGGER.isInfoEnabled()){
+		MtRequest mtRequest = MapperUtil.readAsObjectOf(MtRequest.class,
+		                                                inputJson);
+		    /*if(LOGGER.isInfoEnabled()){
 			LOGGER.info("inputJson : {} \nmtRequest : {}", inputJson,
 			            mtRequest.toString());
 		}*/

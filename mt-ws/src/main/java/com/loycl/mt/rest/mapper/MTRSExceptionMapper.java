@@ -20,21 +20,22 @@ import java.util.Map;
  */
 @Service("mtRSExceptionMapper")
 @Provider
-@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-public class MTRSExceptionMapper implements ExceptionMapper<MTException>{
+@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+public class MTRSExceptionMapper implements ExceptionMapper<MTException> {
 	private static final Logger LOGGER =
-		LoggerFactory.getLogger(MTRSExceptionMapper.class);
+			LoggerFactory.getLogger(MTRSExceptionMapper.class);
 
-	@Override public Response toResponse(MTException exception) {
-		LOGGER.info("exception : {}",exception.toString());
+	@Override
+	public Response toResponse(MTException exception) {
+		LOGGER.info("exception : {}", exception.toString());
 		MtExceptionResponse mtExceptionResponse = new MtExceptionResponse();
 		Map<Integer, String> map = Maps.newHashMap();
 
-		for (ErrorCodes errorCodes : exception.getErrorCodes()){
-			   map.put(errorCodes.getErrorCode(),errorCodes.getErrorMessage());
+		for (ErrorCodes errorCodes : exception.getErrorCodes()) {
+			map.put(errorCodes.getErrorCode(), errorCodes.getErrorMessage());
 		}
 		mtExceptionResponse.setErrorMsgs(map);
 		return Response.status(exception.getErrorCodes().get(0).getErrorCode())
-		               .entity(mtExceptionResponse).build();
+				.entity(mtExceptionResponse).build();
 	}
 }

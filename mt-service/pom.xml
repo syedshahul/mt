@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>mt-modules</artifactId>
-        <groupId>com.loycl.mt</groupId>
-        <version>1.0</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
-    <artifactId>mt-service</artifactId>
+	<parent>
+		<artifactId>mt-modules</artifactId>
+		<groupId>com.loycl.mt</groupId>
+		<version>1.0</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>jar</packaging>
+	<artifactId>mt-service</artifactId>
 
 
-    <dependencies>
-        <!-- Module dependency-->
+	<dependencies>
+		<!-- Module dependency-->
 
-	    <dependency>
-            <groupId>com.loycl.mt</groupId>
-            <artifactId>mt-utils</artifactId>
-        </dependency>
-	       <dependency>
-            <groupId>com.loycl.mt</groupId>
-            <artifactId>mt-model</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>com.loycl.mt</groupId>
+			<artifactId>mt-utils</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.loycl.mt</groupId>
+			<artifactId>mt-model</artifactId>
+		</dependency>
 
-	         <dependency>
-		           <groupId>com.loycl.mt</groupId>
-		           <artifactId>mt-emit-mq</artifactId>
-	         </dependency>
+		<dependency>
+			<groupId>com.loycl.mt</groupId>
+			<artifactId>mt-produce-mq</artifactId>
+		</dependency>
 
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 
-	     <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-tx</artifactId>
-	    </dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+		</dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
 
 
-    </dependencies>
+	</dependencies>
 </project>

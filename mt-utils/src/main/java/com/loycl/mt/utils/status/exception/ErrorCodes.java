@@ -5,7 +5,8 @@ package com.loycl.mt.utils.status.exception;
  * ServiceErrors 100-199 ControllerError 200-299 ModelError 300-399 The project
  * should provide the detailed error codes.
  * <p/>
- * http://static.springsource.org/spring/docs/3.0 .x/javadoc-api/org/springframework/http/HttpStatus.html
+ * http://static.springsource.org/spring/docs/3.0
+ * .x/javadoc-api/org/springframework/http/HttpStatus.html
  *
  * @author: Syed Shahul
  */
@@ -28,7 +29,7 @@ public enum ErrorCodes {
 	NO_CONTENT(204, "No Content"), CONFLICT(409, "Conflict"),
 	SYSTEM_EXCEPTION(500, "System exception"),
 	VALIDATION_EXCEPTION(400, "Validation exception"),
-	FAILED_TO_PARSE_DATA(501,"failed to parse data"),
+	FAILED_TO_PARSE_DATA(501, "failed to parse data"),
 
 	/**
 	 * The Default error code.
@@ -121,7 +122,7 @@ public enum ErrorCodes {
 	 * @param message errorMessage to understand errorCode.
 	 */
 	private ErrorCodes(final int code, final String message) {
-		this.errorCode    = code;
+		this.errorCode = code;
 		this.errorMessage = message;
 	}
 
@@ -146,9 +147,9 @@ public enum ErrorCodes {
 	@Override
 	public String toString() {
 		return "ErrorCodes{" +
-		       "errorCode=" + errorCode +
-		       ", errorMessage='" + errorMessage + '\'' +
-		       '}';
+				"errorCode=" + errorCode +
+				", errorMessage='" + errorMessage + '\'' +
+				'}';
 	}
 
 }

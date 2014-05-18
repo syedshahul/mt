@@ -14,15 +14,15 @@ import org.springframework.stereotype.Service;
  * @author: Syed Shahul
  */
 @Service("sampleManager")
-public class SampleManagerImpl
-	implements SampleManager {
+public class SampleManagerImpl implements SampleManager {
 	private static final Logger LOGGER =
-		LoggerFactory.getLogger(SampleManagerImpl.class);
+			LoggerFactory.getLogger(SampleManagerImpl.class);
 
 
 	private SampleEmitter sampleEmitter;
 
-	@Override public Sample getService() throws MTException {
+	@Override
+	public Sample getService() throws MTException {
 		LOGGER.info("service layer call...");
 		sampleEmitter.emmit();
 		return new Sample("sample");

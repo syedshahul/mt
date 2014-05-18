@@ -11,7 +11,7 @@ import java.util.List;
  * @author: Syed Shahul
  */
 
-public class MTException extends Exception implements Serializable{
+public class MTException extends Exception implements Serializable {
 
 	private static final long serialVersionUID = -8215491669064289884L;
 
@@ -38,7 +38,7 @@ public class MTException extends Exception implements Serializable{
 		this.errorCodes = errorCodes;
 		this.errorMessages = errorMessages;
 		this.errorCause = errorCause;
-		this.source=source;
+		this.source = source;
 	}
 
 	public List<ErrorCodes> getErrorCodes() {
@@ -74,17 +74,19 @@ public class MTException extends Exception implements Serializable{
 	}
 
 	/**
-	 * Overrides the toString of ExceptionClass. It is in json format. It can thus
+	 * Overrides the toString of ExceptionClass. It is in json format. It can
+	 * thus
 	 * be easily passed to the UI layer.
 	 *
 	 * @return customized message.
 	 */
-	@Override public String toString() {
+	@Override
+	public String toString() {
 		return "MTException{" +
-		       "errorCodes=" + errorCodes +
-		       ", errorMessages=" + errorMessages +
-		       ", errorCause='" + errorCause + '\'' +
-		       ", source=" + source +
-		       '}';
+				"errorCodes=" + errorCodes +
+				", errorMessages=" + errorMessages +
+				", errorCause='" + errorCause + '\'' +
+				", source=" + source +
+				'}';
 	}
 }

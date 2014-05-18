@@ -19,29 +19,30 @@ import org.springframework.context.annotation.Configuration;
  * @author: Syed Shahul
  */
 @Configuration("mtProducer")
-public class MtProducerImpl implements MtProducer{
+public class MtProducerImpl implements MtProducer {
 	private static final Logger LOGGER =
-		LoggerFactory.getLogger(MtProducerImpl.class);
+			LoggerFactory.getLogger(MtProducerImpl.class);
 
 	private RabbitTemplate amqpTemplate;
 	private LongGenerator longGenerator;
 
-	@Override public MtResponse pushMT(MtRequest mtRequest) throws MTException {
-		MtResponse mtResponse =new MtResponse(CollectionUtil.isNotEmpty(mtRequest
-			                                                                .getReferenceNo()) ? mtRequest
-			.getReferenceNo() : longGenerator.generate().toString());
+	@Override
+	public MtResponse pushMT(MtRequest mtRequest) throws MTException {
+		MtResponse mtResponse = new MtResponse(
+				CollectionUtil.isNotEmpty(mtRequest.getReferenceNo()) ?
+						mtRequest.getReferenceNo() : longGenerator.generate().toString());
 
 
 		// push mt
-		MessageProperties messageProperties= new MessageProperties();
+		MessageProperties messageProperties = new MessageProperties();
 		messageProperties.setType("MtRequest");
 		messageProperties.setMessageId(mtResponse.getReferenceNo());
 		mtRequest.setReferenceNo(mtResponse.getReferenceNo());
 		String mtRequestStr = MapperUtil.convertToString(mtRequest);
-		Message message = new  Message(mtRequestStr.getBytes(), messageProperties);
+		Message message = new Message(mtRequestStr.getBytes(), messageProperties);
 
-		if(LOGGER.isInfoEnabled()){
-			LOGGER.info("mtProducer : {}",mtResponse);
+		if (LOGGER.isInfoEnabled()) {
+			LOGGER.info("mtProducer : {}", mtResponse);
 		}
 		amqpTemplate.convertAndSend(message);
 		return mtResponse;

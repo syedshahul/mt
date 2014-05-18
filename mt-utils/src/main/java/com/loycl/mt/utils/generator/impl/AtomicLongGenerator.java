@@ -9,13 +9,13 @@ import java.util.concurrent.atomic.AtomicLong;
 //~--- JDK imports ------------------------------------------------------------
 
 public class AtomicLongGenerator implements LongGenerator {
-  private final AtomicLong atomicLong;
+	private final AtomicLong atomicLong;
 
-  private AtomicLongGenerator() {
-    atomicLong = new AtomicLong(System.currentTimeMillis());
-  }
+	private AtomicLongGenerator() {
+		atomicLong = new AtomicLong(System.currentTimeMillis());
+	}
 
-  public Long generate() {
-    return atomicLong.incrementAndGet();
-  }
+	public Long generate() {
+		return atomicLong.incrementAndGet();
+	}
 }

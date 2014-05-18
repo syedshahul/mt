@@ -17,15 +17,16 @@ import javax.ws.rs.core.Response;
 public class SampleRestImpl implements SampleRest {
 
 	private static final Logger LOGGER =
-		LoggerFactory.getLogger(SampleRestImpl.class);
+			LoggerFactory.getLogger(SampleRestImpl.class);
 
 	private SampleManager sampleManager;
 
-	@Override public Response getSample() throws MTException {
-		if(LOGGER.isInfoEnabled()){
+	@Override
+	public Response getSample() throws MTException {
+		if (LOGGER.isInfoEnabled()) {
 			LOGGER.info("info WSR layer");
 		}
-		if(LOGGER.isWarnEnabled()){
+		if (LOGGER.isWarnEnabled()) {
 			LOGGER.warn("warn WSR layer");
 		}
 		LOGGER.info("info wo WSR layer");

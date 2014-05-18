@@ -14,22 +14,24 @@ import org.springframework.stereotype.Service;
  * @author: Syed Shahul
  */
 @Service("mtManager")
-public class MtManagerImpl implements MtManager{
+public class MtManagerImpl implements MtManager {
 	private static final Logger LOGGER =
-		LoggerFactory.getLogger(MtManagerImpl.class);
+			LoggerFactory.getLogger(MtManagerImpl.class);
 
 	private MtProducer mtProducer;
 
-	@Override public MtResponse pushMT(MtRequest mtRequest) throws MTException {
+	@Override
+	public MtResponse pushMT(MtRequest mtRequest) throws MTException {
 	/*	if(LOGGER.isInfoEnabled()){
 			LOGGER.info("MtManagerImpl->pushMT");
 		}*/
 		return mtProducer.pushMT(mtRequest);
 	}
 
-	@Override public void processMT(MtRequest mtRequest) throws MTException {
-		if(LOGGER.isInfoEnabled()){
-			LOGGER.info("MtManagerImpl->processMT : {}",mtRequest.toString());
+	@Override
+	public void processMT(MtRequest mtRequest) throws MTException {
+		if (LOGGER.isInfoEnabled()) {
+			LOGGER.info("MtManagerImpl->processMT : {}", mtRequest.toString());
 		}
 	}
 

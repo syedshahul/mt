@@ -23,27 +23,30 @@ import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
  * @version $Revision$, $Date$
  */
 public final class JacksonConfig {
-  private JacksonConfig() {
-    super();
-  }
+	private JacksonConfig() {
+		super();
+	}
 
-  public static ObjectMapper createMapper() {
-    ObjectMapper mapper = new ObjectMapper();
+	public static ObjectMapper createMapper() {
+		ObjectMapper mapper = new ObjectMapper();
 
-    mapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
-    mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-    mapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, false);
-    mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-    mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-    mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+		mapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
+		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		mapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES,
+		                 false);
+		mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+		mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility
+				.ANY);
+		mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
-    AnnotationIntrospector pair = new AnnotationIntrospectorPair(
-                                      new JacksonAnnotationIntrospector(),
-                                      new JaxbAnnotationIntrospector(
-                                        TypeFactory.defaultInstance()));
+		AnnotationIntrospector pair =
+				new AnnotationIntrospectorPair(new JacksonAnnotationIntrospector(),
+				                               new JaxbAnnotationIntrospector(
+						                               TypeFactory.defaultInstance())
+				);
 
-    mapper.setAnnotationIntrospector(pair);
+		mapper.setAnnotationIntrospector(pair);
 
-    return mapper;
-  }
+		return mapper;
+	}
 }

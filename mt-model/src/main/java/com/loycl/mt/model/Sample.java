@@ -14,7 +14,8 @@ import java.io.Serializable;
  * @author: Syed Shahul
  */
 
-@XmlRootElement(name = "sample") @XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "sample")
+@XmlAccessorType(XmlAccessType.FIELD)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy.class)
 public class Sample implements Serializable {
@@ -41,9 +42,10 @@ public class Sample implements Serializable {
 		this.msg = msg;
 	}
 
-	@Override public String toString() {
+	@Override
+	public String toString() {
 		return "Sample{" +
-		       "msg='" + msg + '\'' +
-		       '}';
+				"msg='" + msg + '\'' +
+				'}';
 	}
 }

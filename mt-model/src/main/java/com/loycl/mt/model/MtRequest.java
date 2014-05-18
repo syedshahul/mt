@@ -12,11 +12,12 @@ import java.io.Serializable;
 /**
  * @author: Syed Shahul
  */
-@XmlRootElement(name = "mtRequest") @XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "mtRequest")
+@XmlAccessorType(XmlAccessType.FIELD)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy.class)
-public class MtRequest implements Serializable{
-	
+public class MtRequest implements Serializable {
+
 	private static final long serialVersionUID = -3081516183308198744L;
 	/**
 	 * mobile_no
@@ -63,11 +64,12 @@ public class MtRequest implements Serializable{
 		this.referenceNo = referenceNo;
 	}
 
-	@Override public String toString() {
+	@Override
+	public String toString() {
 		return "MtRequest{" +
-		       "mobileNo='" + mobileNo + '\'' +
-		       ", msg='" + msg + '\'' +
-		       ", referenceNo=" + referenceNo +
-		       '}';
+				"mobileNo='" + mobileNo + '\'' +
+				", msg='" + msg + '\'' +
+				", referenceNo=" + referenceNo +
+				'}';
 	}
 }
